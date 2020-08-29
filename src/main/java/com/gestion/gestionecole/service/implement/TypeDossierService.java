@@ -1,13 +1,19 @@
 package com.gestion.gestionecole.service.implement;
 
 import java.util.List;
+import java.util.Optional;
+
+import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.gestion.gestionecole.models.TypeDossier;
 import com.gestion.gestionecole.repository.TypeDossierRepository;
 import com.gestion.gestionecole.service.ITypeDossierService;
 
+@Service
+@Transactional
 public class TypeDossierService implements ITypeDossierService{
 	
 	@Autowired TypeDossierRepository typeDossierRepository;
@@ -34,8 +40,8 @@ public class TypeDossierService implements ITypeDossierService{
 	}
 
 	@Override
-	public TypeDossier readOne(Long id) {
-		return typeDossierRepository.getOne(id);
+	public Optional<TypeDossier> readOne(Long id) {
+		return typeDossierRepository.findById(id);
 	}
 
 	@Override

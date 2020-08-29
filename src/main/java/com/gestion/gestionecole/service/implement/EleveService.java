@@ -1,13 +1,19 @@
 package com.gestion.gestionecole.service.implement;
 
 import java.util.List;
+import java.util.Optional;
+
+import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.gestion.gestionecole.models.Eleve;
 import com.gestion.gestionecole.repository.EleveRepository;
 import com.gestion.gestionecole.service.IEleveService;
 
+@Service
+@Transactional
 public class EleveService implements IEleveService{
 	
 	@Autowired EleveRepository eleveRepository;
@@ -34,13 +40,29 @@ public class EleveService implements IEleveService{
 	}
 
 	@Override
-	public Eleve readOne(Long id) {
-		return eleveRepository.getOne(id);
+	public Optional<Eleve> readOne(Long id) {
+		return eleveRepository.findById(id);
 	}
 
 	@Override
 	public Integer count() {
 		return (int) eleveRepository.count();
+	}
+
+	@Override
+	public List<Eleve> findByMatricule(String matricule) {
+		return eleveRepository.findByMatricule(matricule);
+	}
+
+	@Override
+	public List<Eleve> findByNom(String nom) {
+		return eleveRepository.findByNom(nom);
+	}
+
+	@Override
+	public List<Eleve> findByPrenom(String prenom) {
+		// TODO Auto-generated method stub
+		return eleveRepository.findByPrenom(prenom);
 	}
 
 }

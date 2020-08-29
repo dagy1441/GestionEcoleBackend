@@ -1,13 +1,19 @@
 package com.gestion.gestionecole.service.implement;
 
 import java.util.List;
+import java.util.Optional;
+
+import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.gestion.gestionecole.models.Classe;
 import com.gestion.gestionecole.repository.ClasseRepository;
 import com.gestion.gestionecole.service.IClasseService;
 
+@Service
+@Transactional
 public class ClasseService implements IClasseService{
 	
 	@Autowired ClasseRepository classeRepository;
@@ -34,9 +40,9 @@ public class ClasseService implements IClasseService{
 	}
 
 	@Override
-	public Classe readOne(Long id) {
+	public Optional<Classe>  readOne(Long id) {
 		// TODO Auto-generated method stub
-		return classeRepository.getOne(id);
+		return classeRepository.findById(id);
 	}
 
 	@Override

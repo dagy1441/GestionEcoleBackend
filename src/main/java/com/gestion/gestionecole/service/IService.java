@@ -2,6 +2,7 @@ package com.gestion.gestionecole.service;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Optional;
 
 public interface IService <T, ID extends Serializable> {
 	
@@ -13,7 +14,7 @@ public interface IService <T, ID extends Serializable> {
 
     public List<T> readAll();
 
-    public T readOne(final ID id);
+    public Optional<T> readOne(final ID id);
 
     public Integer count();
 }

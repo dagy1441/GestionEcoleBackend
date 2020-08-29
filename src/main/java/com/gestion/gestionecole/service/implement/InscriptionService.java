@@ -1,13 +1,19 @@
 package com.gestion.gestionecole.service.implement;
 
 import java.util.List;
+import java.util.Optional;
+
+import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.gestion.gestionecole.models.Inscription;
 import com.gestion.gestionecole.repository.InscriptionRepository;
 import com.gestion.gestionecole.service.IInscriptionService;
 
+@Service
+@Transactional
 public class InscriptionService implements IInscriptionService{
 	
 	@Autowired InscriptionRepository inscriptionRepository;
@@ -34,8 +40,8 @@ public class InscriptionService implements IInscriptionService{
 	}
 
 	@Override
-	public Inscription readOne(Long id) {
-		return inscriptionRepository.getOne(id);
+	public Optional<Inscription> readOne(Long id) {
+		return inscriptionRepository.findById(id);
 	}
 
 	@Override
