@@ -45,8 +45,8 @@ public class DossierService implements IDossierService{
 	}
 
 	@Override
-	public Integer count() {
-		return (int) dossierRepository.count();
+	public Long count() {
+		return (long) dossierRepository.count();
 	}
 
 }

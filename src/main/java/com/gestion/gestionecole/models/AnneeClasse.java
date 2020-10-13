@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -31,9 +33,13 @@ public class AnneeClasse implements Serializable{
 	private int montant;
 	
 	@ManyToOne 
+//	@JoinColumn(name="classe_id", referencedColumnName = "idClasse")
+	@JsonIgnore
 	private Classe classe;
 	
 	@ManyToOne 
+//	@JoinColumn(name="annee_scolaire_id", referencedColumnName = "idAnneeScolaire")
+	@JsonIgnore
 	private AnneeScolaire anneeScolaire;
 	
 	@OneToMany(mappedBy = "anneeClasse", fetch = FetchType.LAZY)

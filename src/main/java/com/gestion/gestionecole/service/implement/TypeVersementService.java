@@ -45,8 +45,8 @@ public class TypeVersementService implements ITypeVersementService{
 	}
 
 	@Override
-	public Integer count() {
-		return (int) typeVersementRepository.count();
+	public Long count() {
+		return (long) typeVersementRepository.count();
 	}
 
 }

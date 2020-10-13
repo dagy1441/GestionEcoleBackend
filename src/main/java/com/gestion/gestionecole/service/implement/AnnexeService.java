@@ -45,8 +45,8 @@ public class AnnexeService implements IAnnexeService{
 	}
 
 	@Override
-	public Integer count() {
-		return (int) annexeRepository.count();
+	public Long count() {
+		return (long) annexeRepository.count();
 	}
 
 }

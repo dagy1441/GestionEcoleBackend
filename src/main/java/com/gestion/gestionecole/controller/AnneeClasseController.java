@@ -19,7 +19,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.gestion.gestionecole.exception.ResourceNotFoundException;
 import com.gestion.gestionecole.models.AnneeClasse;
+import com.gestion.gestionecole.models.AnneeScolaire;
+import com.gestion.gestionecole.models.Classe;
 import com.gestion.gestionecole.service.implement.AnneeClasseService;
+import com.gestion.gestionecole.service.implement.AnneeScolaireService;
+import com.gestion.gestionecole.service.implement.ClasseService;
 
 @RestController
 @RequestMapping("/api/v1")
@@ -27,9 +31,24 @@ public class AnneeClasseController {
 
 	@Autowired
 	AnneeClasseService anneeClasseService;
+	@Autowired ClasseService classeService;
+	@Autowired AnneeScolaireService anneeScolaireService;
 
-	@PostMapping("/anneeClasses")
-	public AnneeClasse createAnneeClasse(@Valid @RequestBody AnneeClasse anneeClasse) {
+	@PostMapping("/anneeClasses/{idClasse}/{idAnneeScolaire}")
+	public AnneeClasse createAnneeClasse(
+			@Valid @RequestBody AnneeClasse anneeClasse,
+			@PathVariable Long idClasse,
+			@PathVariable Long idAnneeScolaire) throws ResourceNotFoundException{
+		
+		Classe classe = classeService.readOne(idClasse).orElseThrow(
+				()-> new ResourceNotFoundException("Classe "+idClasse+" introuvable")
+				);
+		AnneeScolaire anneeScolaire = anneeScolaireService.readOne(idAnneeScolaire)
+				.orElseThrow(()-> new ResourceNotFoundException("anneeScolaire "+idAnneeScolaire+" introuvable"));
+		
+		anneeClasse.setClasse(classe);
+		anneeClasse.setAnneeScolaire(anneeScolaire);
+		
 		return anneeClasseService.save(anneeClasse);
 	}
 
@@ -79,7 +98,7 @@ public class AnneeClasseController {
 	}
 	
 	@GetMapping("/countAnneeClasse")
-	public Integer countAnneeClasse() {
+	public Long countAnneeClasse() {
 		return anneeClasseService.count();
 	}
 }

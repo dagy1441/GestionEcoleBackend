@@ -45,8 +45,8 @@ public class InscriptionService implements IInscriptionService{
 	}
 
 	@Override
-	public Integer count() {
-		return (int) inscriptionRepository.count();
+	public Long count() {
+		return (long) inscriptionRepository.count();
 	}
 
 }

@@ -1,14 +1,12 @@
 package com.gestion.gestionecole.models;
 
 import java.io.Serializable;
-import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -21,15 +19,12 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-public class TypeAnnexe implements Serializable{
-	
+public class AppRole implements Serializable{
+
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long idTypeAnnexe;
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="ROLE_ID")
+	private Long id;
 	
-	private String libelleTypeAnnexe;
-	
-	@OneToMany(mappedBy = "typeAnnexe", fetch = FetchType.LAZY)
-	private List<Annexe> annexes;
-	
+	private String roleName;
 }

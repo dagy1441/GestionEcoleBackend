@@ -45,13 +45,13 @@ public class EleveService implements IEleveService{
 	}
 
 	@Override
-	public Integer count() {
-		return (int) eleveRepository.count();
+	public Long count() {
+		return (long) eleveRepository.count();
 	}
 
 	@Override
-	public List<Eleve> findByMatricule(String matricule) {
-		return eleveRepository.findByMatricule(matricule);
+	public Optional<Eleve> findByMatricule(String matricule) {
+		return  eleveRepository.findByMatricule(matricule);
 	}
 
 	@Override
@@ -61,8 +61,16 @@ public class EleveService implements IEleveService{
 
 	@Override
 	public List<Eleve> findByPrenom(String prenom) {
-		// TODO Auto-generated method stub
 		return eleveRepository.findByPrenom(prenom);
 	}
+
+	@Override
+	public List<Eleve> findByNomLikeOrPrenomLike(String nom, String prenom) {
+		return eleveRepository.findByNomLikeOrPrenomLike(nom, prenom);
+	}
+
+	
+
+
 
 }

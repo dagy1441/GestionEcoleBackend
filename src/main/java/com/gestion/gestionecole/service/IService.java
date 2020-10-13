@@ -16,5 +16,5 @@ public interface IService <T, ID extends Serializable> {
 
     public Optional<T> readOne(final ID id);
 
-    public Integer count();
+    public Long count();
 }

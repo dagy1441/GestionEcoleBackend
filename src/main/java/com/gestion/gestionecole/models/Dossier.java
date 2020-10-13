@@ -8,6 +8,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -27,9 +29,13 @@ public class Dossier implements Serializable{
 	private int etat;
 	
 	@ManyToOne 
+//	@JoinColumn(name="type_dossier_id", referencedColumnName = "idTypeDossier")
+	@JsonIgnore
 	private TypeDossier typeDossier;
 	
 	@ManyToOne 
+//	@JoinColumn(name="inscription_id", referencedColumnName = "idInscription")
+	@JsonIgnore
 	private Inscription inscription;
 
 }

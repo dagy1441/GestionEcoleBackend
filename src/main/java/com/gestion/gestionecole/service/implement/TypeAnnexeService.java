@@ -30,7 +30,7 @@ public class TypeAnnexeService implements ITypeAnnexeService{
 
 	@Override
 	public void delete(TypeAnnexe entity) {
-		entity.setIdAnnexe(entity.getIdAnnexe());
+		entity.setIdTypeAnnexe(entity.getIdTypeAnnexe());
 		typeAnnexeRepository.delete(entity);
 	}
 
@@ -45,8 +45,8 @@ public class TypeAnnexeService implements ITypeAnnexeService{
 	}
 
 	@Override
-	public Integer count() {
-		return (int) typeAnnexeRepository.count();
+	public Long count() {
+		return (long) typeAnnexeRepository.count();
 	}
 
 }

@@ -86,7 +86,7 @@ public class VersementController {
 	}
 	
 	@GetMapping("/countVersement")
-	public Integer countAllVersement() {
+	public Long countAllVersement() {
 		return versementService.count();
 	}
 	

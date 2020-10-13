@@ -45,8 +45,8 @@ public class VersementService implements IVersementService{
 	}
 
 	@Override
-	public Integer count() {
-		return (int) versementRepository.count();
+	public Long count() {
+		return (long) versementRepository.count();
 	}
 
 }

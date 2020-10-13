@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -35,8 +36,12 @@ public class Versement implements Serializable{
 	private String moisRegler;
 	
 	@ManyToOne 
+//	@JoinColumn(name="type_versement_id", referencedColumnName = "idTypeVersement")
+	@JsonIgnore
 	private TypeVersement typeVersement;
 	
 	@ManyToOne 
+//	@JoinColumn(name="inscription_id", referencedColumnName = "idInscription")
+	@JsonIgnore
 	private Inscription inscription;
 }

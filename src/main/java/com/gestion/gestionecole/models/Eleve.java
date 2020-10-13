@@ -9,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -38,6 +40,8 @@ public class Eleve implements Serializable{
 	private String lieuDeNaissance;
 	
 	@ManyToOne 
+//	@JoinColumn(name="inscription_id", referencedColumnName = "idInscription")
+	@JsonIgnore
 	private Inscription inscription;
 
 }

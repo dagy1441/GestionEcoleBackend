@@ -46,9 +46,9 @@ public class ClasseService implements IClasseService{
 	}
 
 	@Override
-	public Integer count() {
+	public Long count() {
 		// TODO Auto-generated method stub
-		return (int) classeRepository.count();
+		return (long) classeRepository.count();
 	}
 
 }

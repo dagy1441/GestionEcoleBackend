@@ -6,8 +6,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -27,10 +28,14 @@ public class Annexe implements Serializable{
 	
 	private int etat;
 	
-	@ManyToOne 
+	@ManyToOne
+//	@JoinColumn(name="type_annexe_id", referencedColumnName = "idTypeAnnexe")
+	@JsonIgnore
 	private TypeAnnexe typeAnnexe;
 	
-	@ManyToOne @JoinColumn(name = "id_inscription")
+	@ManyToOne
+//	@JoinColumn(name = "id_inscription", referencedColumnName = "idInscription")
+	@JsonIgnore
 	private Inscription inscription;
 
 }

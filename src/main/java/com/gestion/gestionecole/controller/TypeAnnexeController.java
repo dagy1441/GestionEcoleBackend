@@ -75,13 +75,13 @@ public class TypeAnnexeController {
 
 	}
 	
-	@GetMapping("/annexes")
+	@GetMapping("/typeAnnexes")
 	public List<TypeAnnexe> getAllTypeAnnexe(){
 		return typeAnnexeService.readAll();
 	}
 	
 	@GetMapping("/countTypeAnnexe")
-	public Integer countAllTypeAnnexe() {
+	public Long countAllTypeAnnexe() {
 		return typeAnnexeService.count();
 	}
 

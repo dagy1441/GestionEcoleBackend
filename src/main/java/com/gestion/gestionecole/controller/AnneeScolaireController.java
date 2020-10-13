@@ -84,7 +84,7 @@ public class AnneeScolaireController {
 	}
 	
 	@GetMapping("/countAnneeScolaire")
-	public Integer countAnneeScolaire() {
+	public Long countAnneeScolaire() {
 		return anneeScolaireService.count();
 	}
 	

@@ -54,7 +54,8 @@ public class ClasseController {
 	}
 
 	@GetMapping("/classes/{id}")
-	public ResponseEntity<Classe> getClasseById(@PathVariable(value = "id") Long idClasse)
+	public ResponseEntity<Classe> getClasseById(
+			@PathVariable(value = "id") Long idClasse)
 			throws ResourceNotFoundException {
 
 		Classe classe = classeService.readOne(idClasse)
@@ -81,7 +82,7 @@ public class ClasseController {
 	}
 
 	@GetMapping("/countClasses")
-	public Integer countClasse() {
+	public Long countClasse() {
 		return classeService.count();
 	}
 

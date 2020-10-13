@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -26,33 +28,37 @@ public class Inscription implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long codeInscription;
+	private Long idInscription;
 	
-	private Long idAnneeClasseInscription;
+	private String codeInscription;
 	
-	private String ficheInscriptionEnLigne;
+	private Long idAnneeInscription;
 	
-	private String ficheInscriptionEnPresence;
+	private int ficheInscriptionEnLigne;
 	
-	private String ficheAttestationBEPC;
+	private int ficheInscriptionEnPresence;
 	
-	private String ficheAttestationBT;
+	private int ficheAttestationBEPC;
 	
-	private String ficheAttestationCAP;
+	private int ficheAttestationBT;
 	
-	private String dernierBulletin;
+	private int ficheAttestationCAP;
 	
-	@ManyToOne 
+	private int dernierBulletin;
+	
+	@ManyToOne
+//	@JoinColumn(name="annee_classe_id", referencedColumnName = "idAnneeClasse")
+	@JsonIgnore
 	private AnneeClasse anneeClasse;
 	
 	@ManyToOne 
+//	@JoinColumn(name="eleve_id", referencedColumnName = "idEleve")
+	@JsonIgnore
 	private Eleve eleve;
 	
 	@OneToMany(mappedBy = "inscription", fetch = FetchType.LAZY)
 	private List<Versement> versements;
 	
-	@OneToMany(mappedBy = "inscription", fetch = FetchType.LAZY)
-	private List<Eleve> eleves ;
 	
 	@OneToMany(mappedBy = "inscription", fetch = FetchType.LAZY)
 	private List<Dossier> dossiers;

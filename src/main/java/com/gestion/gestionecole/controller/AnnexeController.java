@@ -80,7 +80,7 @@ public class AnnexeController {
 	}
 	
 	@GetMapping("/countAnnexe")
-	public Integer countAllAnnexe() {
+	public Long countAllAnnexe() {
 		return annexeService.count();
 	}
 }

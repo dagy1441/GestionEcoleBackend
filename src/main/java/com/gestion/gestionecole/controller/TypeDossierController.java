@@ -80,7 +80,7 @@ public class TypeDossierController {
 	}
 	
 	@GetMapping("/countTypeDossier")
-	public Integer countTypeDossier() {
+	public Long countTypeDossier() {
 		return typeDossierService.count();
 	}
 }

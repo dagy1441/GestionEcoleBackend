@@ -22,17 +22,17 @@ import com.gestion.gestionecole.models.TypeVersement;
 import com.gestion.gestionecole.service.implement.TypeVersementService;
 
 @RestController
-@RequestMapping
+@RequestMapping("/api/v1")
 public class TypeVersementController {
 
 	@Autowired TypeVersementService typeVersementService;
 	
-	@PostMapping("/typeVersement")
+	@PostMapping("/typeVersements")
 	public TypeVersement createTypeVersement(@Valid @RequestBody TypeVersement typeVersement) {
 		return typeVersementService.save(typeVersement);
 	}
 	
-	@PutMapping("/typeVersement/{id}")
+	@PutMapping("/typeVersements/{id}")
 	public ResponseEntity<TypeVersement> updateTypeVersement(
 			@PathVariable(value = "id") Long idTypeVersement,
 			@RequestBody TypeVersement typeVersementDetails)
@@ -59,7 +59,7 @@ public class TypeVersementController {
 		return ResponseEntity.ok().body(typeVersement);
 	}
 	
-	@DeleteMapping("/typeVersement")
+	@DeleteMapping("/typeVersements/{id}")
 	public Map<String, Boolean> deleteTypeVersement(
 			@PathVariable(value = "id") Long idTypeVersement)
 					throws ResourceNotFoundException{
@@ -81,8 +81,8 @@ public class TypeVersementController {
 		return typeVersementService.readAll();
 	}
 	
-	@GetMapping("/countVersement")
-	public Integer countAllTypeVersement() {
+	@GetMapping("/countVersements")
+	public Long countAllTypeVersement() {
 		return typeVersementService.count();
 	}
 	

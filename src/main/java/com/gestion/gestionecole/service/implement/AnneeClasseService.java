@@ -45,8 +45,8 @@ public class AnneeClasseService implements IAnneeClasseService{
 	}
 
 	@Override
-	public Integer count() {
-		return (int) anneeClasseRepository.count();
+	public Long count() {
+		return (long) anneeClasseRepository.count();
 	}
 
 }

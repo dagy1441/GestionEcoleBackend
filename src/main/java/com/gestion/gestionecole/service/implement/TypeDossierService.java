@@ -45,8 +45,8 @@ public class TypeDossierService implements ITypeDossierService{
 	}
 
 	@Override
-	public Integer count() {
-		return (int) typeDossierRepository.count();
+	public Long count() {
+		return (long) typeDossierRepository.count();
 	}
 
 }
